@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>  
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />  
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta charset="UTF-8">
+  
+  <title>photo-slap</title>
+  <link rel="stylesheet" type="text/css" href="../node_modules/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="../node_modules/roboto-fontface/css/roboto/roboto-fontface.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+  <!-- Starting Display -->
+  <div id="splash-div" class="splash-image">    
+    <div class="button" id="add_directories"><i class="fa fa-folder-open" aria-hidden="true"></i> Add Directories</div>    
+  </div>
+
+  <!-- Loading Display -->
+  <div id="loading-div" class="loading-image hidden"></div>
+
+
+  <div id="full-display-div" class="full-display hidden">
+    <!-- Image Display -->
+    <div id="display-div" class="display-image"></div>
+
+    <!-- Loading Display -->
+    <div id="blurred-div" class="blurred-image"></div>    
+  </div>
+  
+
+  <!-- Video Display -->
+  <div id="video-div" class="display-video hidden">
+    <video id="video-player" width="100%" source controls autoplay>      
+      <supported!>Videos are not supported</supported!>
+    </video>
+  </div>
+
+  <!-- Popup Controls -->
+  <div id="controls-div" class="display-controls">
+    <div class="controls-left">
+      <div id="trash-button" class="button" data-toggle="tooltip" data-placement="top" title="delete image"><i class="fa fa-trash" aria-hidden="true"></i></div>
+      <span data-bs-toggle="modal" data-bs-target="#optionsModal"><div id="options-button" class="button" data-toggle="tooltip" data-placement="top" title="options"><i class="fa fa-sliders" aria-hidden="true"></i></div></span>
+    </div>
+
+    <div class="controls-middle">
+      <div id="back-button" class="button" data-toggle="tooltip" data-placement="top" title="previous image"><i class="fa fa-backward" aria-hidden="true"></i></div>
+      <div id="play-button" class="button" data-toggle="tooltip" data-placement="top" title="play/pause slideshow"><i id="play-icon" class="fa fa-play" aria-hidden="true"></i></div>      
+      <div id="forward-button" class="button" data-toggle="tooltip" data-placement="top" title="next image"><i class="fa fa-forward" aria-hidden="true"></i></div>
+    </div>
+
+    <div class="controls-right">
+      <div id="expand-button" class="button" data-toggle="tooltip" data-placement="top" title="expand/minimize window"><i id="expand-icon" class="fa fa-expand" aria-hidden="true"></i></div>
+    </div>    
+  </div>
+
+  <!-- Options -->
+  <div class="modal fade" role="dialog" id="optionsModal">
+    <div class="modal-dialog modal-lg">		 
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+          <h4 class="modal-title">photo-slap options</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="option-row">
+            <div class="option-toggle"><div id="auto-shuffle-button" class="option-button"><i id="expand-icon" class="fa fa-check" aria-hidden="true"></i></div></div>
+            <div class="option-text">automatically shuffle files when opening</div>
+          </div>
+          <div class="option-row"> 
+            <div class="option-toggle"><div id="include-videos-button" class="option-button"><i id="expand-icon" class="fa fa-check" aria-hidden="true"></i></div></div> 
+            <div class="option-text">include video files when opening</div>
+          </div>
+          <div class="option-row">
+            <div class="option-toggle"><div id="transitions-button" class="option-button"><i id="expand-icon" class="fa fa-times" aria-hidden="true"></i></div></div>
+            <div class="option-text">use transitions when switching images</div>
+          </div>
+          <div class="option-row">
+            <div class="option-toggle"><div id="background-button" class="option-button"><i id="expand-icon" class="fa fa-times" aria-hidden="true"></i></div></div>
+            <div class="option-text">use simple black background</div>
+          </div>          
+          <div class="option-row">
+            <div class="option-toggle"><input type="text" class="form-control" id="seconds-between-images"></div>
+            <div class="option-text">how many seconds to show photos for</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+        </div>					
+      </div>
+    </div>
+  </div>
+
+  <script id="alert-template" type="text/x-handlebars-template">
+    <div id="alert-message-box">                    
+      <div class="alert alert-{{type}} alert-dismissible" role="alert">                        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{message}}
+      </div>
+    </div>
+  </script>  
+
+</body>
+
+</html>
