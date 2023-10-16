@@ -21,7 +21,7 @@
     "@popperjs/core": "^2.11.6",
     "async": "^3.2.4",
     "bootstrap": "^5.2.3",
-    "electron": "^21.3.0",
+    "electron": "^22.3.25",
     "electron-store": "^8.1.0",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.7.7",
