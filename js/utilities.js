@@ -10,7 +10,7 @@ exports.getFiles = (directories, includeVideosParam, callback) => {
 
   includeVideos = includeVideosParam;
   directoryFiles = [];
-  
+
   async.each(directories, exports.walkDirectories, (err) => {
     if (err) {
       return callback(null, err);
@@ -54,19 +54,19 @@ exports.walk = (dir, done) => {
 
       const resolved_file = path.resolve(dir, file);
       fs.stat(resolved_file, (err, stat) => {
-          
+
         if (stat && stat.isDirectory()) {
           exports.walk(resolved_file, (err, res) => {
             results = results.concat(res);
             if (!--pending) {
               return done(null, results);
             }
-            
+
             return null;
           });
 
         } else {
-          
+
           if (exports.includeFile(resolved_file, stat)) {
             results.push(resolved_file);
           }
@@ -75,11 +75,11 @@ exports.walk = (dir, done) => {
             return done(null, results);
           }
         }
-            
+
         return null;
       });
     });
-    
+
     return null;
   });
 };
@@ -87,7 +87,8 @@ exports.walk = (dir, done) => {
 exports.includeFile = (filename, stat) => {
 
   for (let i = 0; i < config.supported_extensions.length; i++) {
-    if (filename.toLowerCase().endsWith(config.supported_extensions[i])) {
+    if (filename.toLowerCase().endsWith(config.supported_extensions[i]) &&
+        !filename.toLowerCase().startsWith('.')) {
       return exports.isFileSmallEnough(filename, stat);
     }
   }
