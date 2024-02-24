@@ -8,9 +8,9 @@
     ".webp",
     ".gif",
     ".png",
-    ".bmp"    
+    ".bmp"
   ],
-  "supported_video": [    
+  "supported_video": [
     ".webm",
     ".mp4",
     ".mkv",
@@ -27,5 +27,5 @@
   "default_auto_shuffle": false,
   "default_include_video": true,
   "default_use_tranistions": true,
-  "default_black_background": true  
+  "default_black_background": true
 }
